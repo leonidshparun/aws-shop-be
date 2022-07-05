@@ -1,0 +1,2 @@
+# aws-shop-be
+CLOUDX: AWS PRACTITIONER FOR JS
