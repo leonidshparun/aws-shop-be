@@ -4,7 +4,7 @@ import { middyfy } from '@libs/lambda';
 
 import { getProductList } from '../../mock/mock-db';
 
-const getProductsList: ValidatedEventAPIGatewayProxyEvent = async (_event) => {
+export const getProductsList: ValidatedEventAPIGatewayProxyEvent = async (_event) => {
   const products = await getProductList();
 
   return formatJSONResponse({ products });
