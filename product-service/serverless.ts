@@ -3,10 +3,12 @@ import type { AWS } from '@serverless/typescript';
 import getProductsList from '@functions/getProductsList';
 import getProductsById from '@functions/getProductsById';
 
+import { ResponseModel, ResponseSchema } from '@schema/index';
+
 const serverlessConfiguration: AWS = {
   service: 'product-service',
   frameworkVersion: '3',
-  plugins: ['serverless-esbuild'],
+  plugins: ['serverless-esbuild', 'serverless-aws-documentation'],
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
@@ -37,6 +39,38 @@ const serverlessConfiguration: AWS = {
       define: { 'require.resolve': undefined },
       platform: 'node',
       concurrency: 10,
+    },
+    documentation: {
+      api: {
+        info: {
+          version: '1',
+          title: 'My AWS shop API',
+          description: 'This is my AWS shop API',
+        },
+      },
+      models: [
+        {
+          name: ResponseModel.Product,
+          title: 'Product',
+          description: 'GET Products request model',
+          contentType: 'application/json',
+          schema: ResponseSchema[ResponseModel.Product],
+        },
+        {
+          name: ResponseModel.ProductList,
+          title: 'Product List',
+          description: 'GET Product request model',
+          contentType: 'application/json',
+          schema: ResponseSchema[ResponseModel.ProductList],
+        },
+        {
+          name: ResponseModel.Error,
+          title: 'Error Response',
+          description: 'Error response model',
+          contentType: 'application/json',
+          schema: ResponseSchema[ResponseModel.Error],
+        },
+      ],
     },
   },
 };
