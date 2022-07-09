@@ -17,9 +17,9 @@ describe('getProductsList', () => {
     const resultFromHandler = await handler(null, null, null);
 
     if (resultFromHandler) {
-      const { products } = JSON.parse(resultFromHandler.body);
+      const { items } = JSON.parse(resultFromHandler.body);
 
-      expect(Array.isArray(products)).toEqual(true);
+      expect(Array.isArray(items)).toEqual(true);
     }
   });
 
@@ -27,7 +27,7 @@ describe('getProductsList', () => {
     const resultFromHandler = await handler(null, null, null);
 
     const mockedData = await getProductList();
-    const mockedResult = formatJSONResponse({ products: mockedData });
+    const mockedResult = formatJSONResponse({ items: mockedData });
 
     expect(mockedResult).toEqual(resultFromHandler);
   });

@@ -3,10 +3,14 @@ import { getProductsById as handler } from '../src/functions/getProductsById/han
 import { APIGatewayProxyEvent } from 'aws-lambda';
 
 describe('getProductsById', () => {
-  it('should return status code 200', async () => {
+  it('should return status code 200 if product exist', async () => {
+    const mockedProductList = await getProductList();
+    const mockedProduct = mockedProductList[0];
+    const mockedProductId = mockedProduct.id;
+
     const event: APIGatewayProxyEvent = {
       pathParameters: {
-        productId: '1',
+        productId: mockedProductId,
       },
     } as any;
 
@@ -16,6 +20,24 @@ describe('getProductsById', () => {
       const { statusCode } = resultFromHandler;
 
       expect(statusCode).toEqual(200);
+    }
+  });
+
+  it('should return status code 404 if product not found', async () => {
+    const mockedProductId = 'non-existing-product-id';
+
+    const event: APIGatewayProxyEvent = {
+      pathParameters: {
+        productId: mockedProductId,
+      },
+    } as any;
+
+    const resultFromHandler = await handler(event, null, null);
+
+    if (resultFromHandler) {
+      const { statusCode } = resultFromHandler;
+
+      expect(statusCode).toEqual(404);
     }
   });
 
@@ -33,7 +55,7 @@ describe('getProductsById', () => {
     const resultFromHandler = await handler(event, null, null);
 
     if (resultFromHandler) {
-      const { product } = JSON.parse(resultFromHandler.body);
+      const product = JSON.parse(resultFromHandler.body);
 
       expect(product).toEqual(mockedProduct);
     }
