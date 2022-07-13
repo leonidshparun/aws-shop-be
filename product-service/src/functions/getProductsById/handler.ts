@@ -6,9 +6,8 @@ import { getProductById } from '../../mock/mock-db';
 import schema from './schema';
 
 export const getProductsById: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
-  const productId = event.pathParameters.productId;
-
   try {
+    const productId = event.pathParameters.productId;
     const product = await getProductById(productId);
 
     return formatJSONResponse({ ...product });

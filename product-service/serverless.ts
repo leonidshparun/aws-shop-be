@@ -8,7 +8,7 @@ import { ResponseModel, ResponseSchema } from '@schema/index';
 const serverlessConfiguration: AWS = {
   service: 'product-service',
   frameworkVersion: '3',
-  plugins: ['serverless-esbuild', 'serverless-aws-documentation'],
+  plugins: ['serverless-aws-documentation', 'serverless-webpack'],
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
@@ -30,20 +30,17 @@ const serverlessConfiguration: AWS = {
   },
   package: { individually: true },
   custom: {
-    esbuild: {
-      bundle: true,
-      minify: false,
-      sourcemap: true,
-      exclude: ['aws-sdk'],
-      target: 'node14',
-      define: { 'require.resolve': undefined },
-      platform: 'node',
+    webpack: {
+      webpackConfig: 'webpack.config.js',
+      includeModules: true,
+      packager: 'npm',
+      excludeFiles: 'src/**/*.test.ts',
       concurrency: 10,
     },
     documentation: {
       api: {
         info: {
-          version: '1',
+          version: '0.0.1',
           title: 'My AWS shop API',
           description: 'This is my AWS shop API',
         },

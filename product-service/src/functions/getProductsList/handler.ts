@@ -5,9 +5,7 @@ import { middyfy } from '@libs/lambda';
 import { getProductList } from '../../mock/mock-db';
 import schema from './schema';
 
-export const getProductsList: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (
-  _event
-) => {
+export const getProductsList: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async () => {
   try {
     const items = await getProductList();
 
