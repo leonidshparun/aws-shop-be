@@ -1,6 +1,6 @@
-import { getProductList } from '../src/mock/mock-db';
-import { formatJSONResponse } from '../src/libs/api-gateway';
-import { getProductsList as handler } from '../src/functions/getProductsList/handler';
+import { getProductList } from '../mock/mock-db';
+import { formatJSONResponse } from '@libs/api-gateway';
+import { getProductsList as handler } from '@functions/getProductsList/handler';
 
 describe('getProductsList', () => {
   it('should return status code 200', async () => {

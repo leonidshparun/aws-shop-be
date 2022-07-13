@@ -1,5 +1,5 @@
-import { getProductList } from '../src/mock/mock-db';
-import { getProductsById as handler } from '../src/functions/getProductsById/handler';
+import { getProductList } from '../mock/mock-db';
+import { getProductsById as handler } from '@functions/getProductsById/handler';
 import { APIGatewayProxyEvent } from 'aws-lambda';
 
 describe('getProductsById', () => {
