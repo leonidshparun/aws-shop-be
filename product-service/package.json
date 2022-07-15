@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "deploy": "sls deploy",
+    "clear": "sls remove",
     "swagger-doc": "serverless downloadDocumentation --outputFileName=swagger.yml",
     "deploy:swagger-doc": "npm run deploy && npm run swagger-doc",
     "build-webpack": "serverless webpack --out dist",

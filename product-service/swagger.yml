@@ -2,9 +2,9 @@
 swagger: "2.0"
 info:
   description: "This is my AWS shop API"
-  version: "2022-07-15T06:38:04Z"
+  version: "2022-07-15T07:24:38Z"
   title: "product-service-dev"
-host: "o5hjwskir9.execute-api.eu-west-1.amazonaws.com"
+host: "jr2kwhc8g7.execute-api.eu-west-1.amazonaws.com"
 basePath: "/dev"
 schemes:
 - "https"
@@ -61,7 +61,6 @@ definitions:
               type: "number"
               title: "Product price"
               minimum: 0.0
-              exclusiveMinimum: true
             count:
               type: "number"
               title: "Products left in stock"
@@ -93,7 +92,6 @@ definitions:
         type: "number"
         title: "Product price"
         minimum: 0.0
-        exclusiveMinimum: true
       count:
         type: "number"
         title: "Products left in stock"

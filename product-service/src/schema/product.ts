@@ -24,7 +24,6 @@ export default {
       type: 'number',
       title: 'Product price',
       minimum: 0,
-      exclusiveMinimum: true,
     },
   },
   required: ['id', 'price', 'title', 'count'],
