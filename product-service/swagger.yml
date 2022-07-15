@@ -1,117 +1,117 @@
 ---
-swagger: '2.0'
+swagger: "2.0"
 info:
-  description: 'This is my AWS shop API'
-  version: '2022-07-13T06:24:02Z'
-  title: 'product-service-dev'
-host: 'jc637za7ok.execute-api.eu-west-1.amazonaws.com'
-basePath: '/dev'
+  description: "This is my AWS shop API"
+  version: "2022-07-15T06:38:04Z"
+  title: "product-service-dev"
+host: "o5hjwskir9.execute-api.eu-west-1.amazonaws.com"
+basePath: "/dev"
 schemes:
-  - 'https'
+- "https"
 paths:
   /products:
     get:
-      summary: 'Get All Products'
-      description: 'Returns all products'
+      summary: "Get All Products"
+      description: "Returns all products"
       produces:
-        - 'application/json'
+      - "application/json"
       responses:
-        '200':
-          description: '200 response'
+        "200":
+          description: "200 response"
           schema:
-            $ref: '#/definitions/ProductListResponse'
-        '404':
-          description: '404 response'
+            $ref: "#/definitions/ProductListResponse"
+        "404":
+          description: "404 response"
           schema:
-            $ref: '#/definitions/ErrorResponse'
+            $ref: "#/definitions/ErrorResponse"
   /products/{productId}:
     get:
-      summary: 'Get Product By Id'
-      description: 'Returns a single product'
+      summary: "Get Product By Id"
+      description: "Returns a single product"
       produces:
-        - 'application/json'
+      - "application/json"
       parameters:
-        - name: 'productId'
-          in: 'path'
-          description: 'ID of product to return'
-          required: true
-          type: 'string'
+      - name: "productId"
+        in: "path"
+        description: "ID of product to return"
+        required: true
+        type: "string"
       responses:
-        '200':
-          description: '200 response'
+        "200":
+          description: "200 response"
           schema:
-            $ref: '#/definitions/ProductResponse'
-        '404':
-          description: '404 response'
+            $ref: "#/definitions/ProductResponse"
+        "404":
+          description: "404 response"
           schema:
-            $ref: '#/definitions/ErrorResponse'
+            $ref: "#/definitions/ErrorResponse"
 definitions:
   ProductListResponse:
-    type: 'object'
+    type: "object"
     required:
-      - 'items'
+    - "items"
     properties:
       items:
-        type: 'array'
+        type: "array"
         items:
-          type: 'object'
-          description: 'Product schema'
+          type: "object"
+          description: "Product schema"
           properties:
             price:
-              type: 'number'
-              title: 'Product price'
+              type: "number"
+              title: "Product price"
               minimum: 0.0
               exclusiveMinimum: true
             count:
-              type: 'number'
-              title: 'Products left in stock'
+              type: "number"
+              title: "Products left in stock"
               minimum: 0.0
             description:
-              type: 'string'
-              title: 'Product description'
+              type: "string"
+              title: "Product description"
             id:
-              type: 'string'
-              title: 'Unique ID of the product'
+              type: "string"
+              title: "Unique ID of the product"
             title:
-              type: 'string'
-              title: 'Product title'
+              type: "string"
+              title: "Product title"
           required:
-            - 'count'
-            - 'id'
-            - 'price'
-            - 'title'
-    description: 'GET Product request model'
+          - "count"
+          - "id"
+          - "price"
+          - "title"
+    description: "GET Product request model"
   ProductResponse:
-    type: 'object'
+    type: "object"
     required:
-      - 'count'
-      - 'id'
-      - 'price'
-      - 'title'
+    - "count"
+    - "id"
+    - "price"
+    - "title"
     properties:
       price:
-        type: 'number'
-        title: 'Product price'
+        type: "number"
+        title: "Product price"
         minimum: 0.0
         exclusiveMinimum: true
       count:
-        type: 'number'
-        title: 'Products left in stock'
+        type: "number"
+        title: "Products left in stock"
         minimum: 0.0
       description:
-        type: 'string'
-        title: 'Product description'
+        type: "string"
+        title: "Product description"
       id:
-        type: 'string'
-        title: 'Unique ID of the product'
+        type: "string"
+        title: "Unique ID of the product"
       title:
-        type: 'string'
-        title: 'Product title'
-    description: 'GET Products request model'
+        type: "string"
+        title: "Product title"
+    description: "GET Products request model"
   ErrorResponse:
-    type: 'object'
+    type: "object"
     properties:
       message:
-        type: 'string'
-        title: 'Error response description'
-    description: 'Error response model'
+        type: "string"
+        title: "Error response description"
+    description: "Error response model"
