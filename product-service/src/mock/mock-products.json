@@ -2,141 +2,71 @@
   {
     "id": "714d8ec9-67bf-40a1-9123-9e1c3e4f80f8",
     "count": 12,
-    "title": "LeMans",
+    "title": "Ноутбук HP ProBook 455 G8 45N00ES",
     "description": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
-    "price": 79
+    "price": 1850
   },
   {
     "id": "9b11afd8-2a59-49ca-bb28-adc809ec3280",
     "count": 48,
-    "title": "626",
+    "title": "Ноутбук 2-в-1 ASUS VivoBook Flip 14 TM420UA-EC135",
     "description": "Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
-    "price": 199
+    "price": 2290
   },
   {
     "id": "0ec9ff36-d5ff-4be9-ab5b-5576ad24f62a",
-    "count": 30,
-    "title": "SC",
+    "count": 3,
+    "title": "Ноутбук HP Pavilion 15-eh1052ur 4E4A1EA",
     "description": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
-    "price": 95
+    "price": 2097
   },
   {
     "id": "33a3c1f6-090e-4be2-b1af-475e26b4a185",
-    "count": 46,
-    "title": "Evora",
+    "count": 5,
+    "title": "Ноутбук Apple Macbook Air 13\" M1 2020 MGN63",
     "description": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum.",
-    "price": 144
+    "price": 3570
   },
   {
     "id": "b0252120-52f9-4e00-9b6a-3021ade4d4df",
     "count": 11,
-    "title": "Cherokee",
+    "title": "Игровой ноутбук ASUS ROG Strix G15 G513IH-HN014",
     "description": "Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus.",
-    "price": 120
+    "price": 2590
   },
   {
     "id": "fb9a4409-29ef-4c7a-8211-2c1a62606b4c",
     "count": 6,
-    "title": "E-Class",
+    "title": "Ноутбук Apple Macbook Pro 14\" M1 Pro 2021 MKGR3",
     "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    "price": 157
+    "price": 7600
   },
   {
     "id": "3fbd2766-c822-4dce-a714-6d49c0619fca",
     "count": 6,
-    "title": "7 Series",
+    "title": "Ноутбук Apple Macbook Air 13\" M1 2020 Z1240004P",
     "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.",
-    "price": 87
+    "price": 5900
   },
   {
     "id": "f886dd31-4a69-4f75-825d-2469c88e93c2",
     "count": 9,
-    "title": "Electra",
+    "title": "Ноутбук Lenovo IdeaPad 3 15ALC6 82KU00CTRE",
     "description": "Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",
-    "price": 95
+    "price": 2090
   },
   {
     "id": "2b29e59d-9c4a-4229-bd42-51a0e06e013b",
     "count": 9,
-    "title": "Precis",
+    "title": "Ноутбук Apple Macbook Pro 16\" M1 Max 2021 MK1A3",
     "description": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",
-    "price": 104
+    "price": 16990
   },
   {
     "id": "fbe57157-7569-4b66-a795-e222c1342fb1",
     "count": 28,
-    "title": "QX",
+    "title": "Ноутбук Lenovo IdeaPad Gaming 3 15ACH6 82K200LRRK",
     "description": "Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante.",
-    "price": 97
-  },
-  {
-    "id": "9dfe7029-86f6-4335-af11-d09d7212e05a",
-    "count": 42,
-    "title": "Passat",
-    "description": "Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo.",
-    "price": 101
-  },
-  {
-    "id": "3dd08505-c2a8-418d-a0a2-087edc887336",
-    "count": 43,
-    "title": "Express",
-    "description": "Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy.",
-    "price": 110
-  },
-  {
-    "id": "35a3312a-6453-4629-b1ac-9dec03d82319",
-    "count": 2,
-    "title": "Riviera",
-    "description": "Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl.",
-    "price": 134
-  },
-  {
-    "id": "d8f44349-55de-477e-9997-00f9097d0efc",
-    "count": 11,
-    "title": "Colt",
-    "description": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla.",
-    "price": 133
-  },
-  {
-    "id": "e82d39f2-b565-4442-a0ef-05fa7233e85b",
-    "count": 39,
-    "title": "Sierra 2500",
-    "description": "Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.",
-    "price": 119
-  },
-  {
-    "id": "3ec55435-eea5-4d54-9d80-737953871da0",
-    "count": 50,
-    "title": "Sierra 3500",
-    "description": "Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus.",
-    "price": 165
-  },
-  {
-    "id": "b355ff58-f62c-4415-adb8-856bb0f5aed2",
-    "count": 15,
-    "title": "Cayenne",
-    "description": "Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio.",
-    "price": 115
-  },
-  {
-    "id": "88765af0-1aca-4e25-a247-f62033c3e4da",
-    "count": 34,
-    "title": "A4",
-    "description": "Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui.",
-    "price": 164
-  },
-  {
-    "id": "000b83c0-5a98-49ae-985d-93780397cd19",
-    "count": 40,
-    "title": "Yaris",
-    "description": "Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
-    "price": 184
-  },
-  {
-    "id": "b0ebd4c7-e6ae-419f-81bb-6551bc3eeb51",
-    "count": 3,
-    "title": "Corrado",
-    "description": "Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam.",
-    "price": 152
+    "price": 2690
   }
 ]
