@@ -1,0 +1,115 @@
+---
+swagger: "2.0"
+info:
+  description: "This is my AWS shop API"
+  version: "2022-07-15T07:24:38Z"
+  title: "product-service-dev"
+host: "jr2kwhc8g7.execute-api.eu-west-1.amazonaws.com"
+basePath: "/dev"
+schemes:
+- "https"
+paths:
+  /products:
+    get:
+      summary: "Get All Products"
+      description: "Returns all products"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ProductListResponse"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /products/{productId}:
+    get:
+      summary: "Get Product By Id"
+      description: "Returns a single product"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "productId"
+        in: "path"
+        description: "ID of product to return"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ProductResponse"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+definitions:
+  ProductListResponse:
+    type: "object"
+    required:
+    - "items"
+    properties:
+      items:
+        type: "array"
+        items:
+          type: "object"
+          description: "Product schema"
+          properties:
+            price:
+              type: "number"
+              title: "Product price"
+              minimum: 0.0
+            count:
+              type: "number"
+              title: "Products left in stock"
+              minimum: 0.0
+            description:
+              type: "string"
+              title: "Product description"
+            id:
+              type: "string"
+              title: "Unique ID of the product"
+            title:
+              type: "string"
+              title: "Product title"
+          required:
+          - "count"
+          - "id"
+          - "price"
+          - "title"
+    description: "GET Product request model"
+  ProductResponse:
+    type: "object"
+    required:
+    - "count"
+    - "id"
+    - "price"
+    - "title"
+    properties:
+      price:
+        type: "number"
+        title: "Product price"
+        minimum: 0.0
+      count:
+        type: "number"
+        title: "Products left in stock"
+        minimum: 0.0
+      description:
+        type: "string"
+        title: "Product description"
+      id:
+        type: "string"
+        title: "Unique ID of the product"
+      title:
+        type: "string"
+        title: "Product title"
+    description: "GET Products request model"
+  ErrorResponse:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+        title: "Error response description"
+    description: "Error response model"
