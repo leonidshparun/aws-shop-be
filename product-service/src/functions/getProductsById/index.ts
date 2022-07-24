@@ -1,6 +1,6 @@
 import { handlerPath } from '@libs/handler-resolver';
-
-import { ResponseModel } from '@schema/index';
+import { getProductByIdResponseModel } from '@functions/getProductsById/schema';
+import { errorResponseModel } from '@schema/error';
 
 export default {
   handler: `${handlerPath(__dirname)}/handler.main`,
@@ -33,7 +33,7 @@ export default {
                 description: 'A product with specified id',
               },
               responseModels: {
-                'application/json': ResponseModel.Product,
+                'application/json': getProductByIdResponseModel.name,
               },
             },
             {
@@ -42,7 +42,7 @@ export default {
                 description: 'Product not found',
               },
               responseModels: {
-                'application/json': ResponseModel.Error,
+                'application/json': errorResponseModel.name,
               },
             },
           ],

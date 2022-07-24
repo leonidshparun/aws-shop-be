@@ -1,14 +1,17 @@
-import { getProductList } from '../mock/mock-db';
-import { getProductsById as handler } from '@functions/getProductsById/handler';
-import { APIGatewayProxyEvent } from 'aws-lambda';
+import { getProductsById } from '@functions/getProductsById/lambda';
+import { ProductInMemoryDataService } from '../services/product-in-memory-data.service';
+
+const mockedProductDataService = new ProductInMemoryDataService();
+
+const handler = getProductsById(mockedProductDataService);
 
 describe('getProductsById', () => {
   it('should return status code 200 if product exist', async () => {
-    const mockedProductList = await getProductList();
+    const mockedProductList = await mockedProductDataService.getProducts();
     const mockedProduct = mockedProductList[0];
     const mockedProductId = mockedProduct.id;
 
-    const event: APIGatewayProxyEvent = {
+    const event = {
       pathParameters: {
         productId: mockedProductId,
       },
@@ -26,7 +29,7 @@ describe('getProductsById', () => {
   it('should return status code 404 if product not found', async () => {
     const mockedProductId = 'non-existing-product-id';
 
-    const event: APIGatewayProxyEvent = {
+    const event = {
       pathParameters: {
         productId: mockedProductId,
       },
@@ -42,11 +45,11 @@ describe('getProductsById', () => {
   });
 
   it('should return product item if product id of existing product provided', async () => {
-    const mockedProductList = await getProductList();
+    const mockedProductList = await mockedProductDataService.getProducts();
     const mockedProduct = mockedProductList[0];
     const mockedProductId = mockedProduct.id;
 
-    const event: APIGatewayProxyEvent = {
+    const event = {
       pathParameters: {
         productId: mockedProductId,
       },
@@ -64,7 +67,7 @@ describe('getProductsById', () => {
   it('should return message if product id of existing product not provided', async () => {
     const mockedProductId = 'non-existing-product-id';
 
-    const event: APIGatewayProxyEvent = {
+    const event = {
       pathParameters: {
         productId: mockedProductId,
       },

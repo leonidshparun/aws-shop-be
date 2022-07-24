@@ -1,19 +1,7 @@
-import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
-import { formatJSONResponse } from '@libs/api-gateway';
-import { middyfy } from '@libs/lambda';
+import { getProductsByIdHOF } from '@functions/getProductsById/lambda';
 
-import { getProductById } from '../../mock/mock-db';
-import schema from './schema';
+import { ProductDatabaseService } from '../../services/product-database.service';
 
-export const getProductsById: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
-  try {
-    const productId = event.pathParameters.productId;
-    const product = await getProductById(productId);
+const productService = ProductDatabaseService.create();
 
-    return formatJSONResponse({ ...product });
-  } catch (error) {
-    return formatJSONResponse({ message: error.message }, 404);
-  }
-};
-
-export const main = middyfy(getProductsById);
+export const main = getProductsByIdHOF(productService);
