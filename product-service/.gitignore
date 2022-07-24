@@ -11,3 +11,5 @@ jspm_packages
 .webpackCache
 .webpack
 dist
+
+.env
