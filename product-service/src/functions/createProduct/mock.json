@@ -1,0 +1,6 @@
+{
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"id\":\"714d8ec9-67bf-40a1-9123-9e1c3e4f80f8\",\"count\":11,\"title\":\"test\",\"description\":\"Updated description\",\"price\":333}"
+}

@@ -1,5 +1,4 @@
-export default {
-  $schema: 'http://json-schema.org/draft-04/schema#',
+export const productSchema = {
   type: 'object',
   description: 'Product schema',
   properties: {
