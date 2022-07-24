@@ -9,7 +9,6 @@
     "clear": "sls remove",
     "swagger-doc": "serverless downloadDocumentation --outputFileName=swagger.yml",
     "deploy:swagger-doc": "npm run deploy && npm run swagger-doc",
-    "build-webpack": "serverless webpack --out dist",
     "lint": "eslint  --ignore-path .gitignore .",
     "lint:updated": "pipe-git-updated --ext=js -- eslint --ignore-path .gitignore",
     "prettier-check": "prettier -c --ignore-path .gitignore \"**/*.{css,html,js,ts,json,md,yaml,yml}\"",
@@ -22,7 +21,13 @@
   },
   "dependencies": {
     "@middy/core": "^2.5.3",
-    "@middy/http-json-body-parser": "^2.5.3"
+    "@middy/http-error-handler": "^3.1.0",
+    "@middy/http-json-body-parser": "^2.5.3",
+    "@middy/validator": "^3.1.0",
+    "@types/pg": "^8.6.5",
+    "pg": "^8.7.3",
+    "uuidv4": "^6.2.13",
+    "winston": "^3.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
