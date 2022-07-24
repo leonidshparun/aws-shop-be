@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "This is my AWS shop API"
-  version: "2022-07-15T07:24:38Z"
+  version: "2022-07-23T11:29:45Z"
   title: "product-service-dev"
 host: "jr2kwhc8g7.execute-api.eu-west-1.amazonaws.com"
 basePath: "/dev"
@@ -19,11 +19,49 @@ paths:
         "200":
           description: "200 response"
           schema:
-            $ref: "#/definitions/ProductListResponse"
+            $ref: "#/definitions/GetProductListResponse"
         "404":
           description: "404 response"
           schema:
             $ref: "#/definitions/ErrorResponse"
+    post:
+      summary: "Create product"
+      description: "Returns a single newly created product"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "PostProductRequest"
+        description: "Request body description"
+        required: true
+        schema:
+          $ref: "#/definitions/PostProductRequest"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PostProductResponse"
+        "404":
+          description: "404 response"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
   /products/{productId}:
     get:
       summary: "Get Product By Id"
@@ -40,13 +78,65 @@ paths:
         "200":
           description: "200 response"
           schema:
-            $ref: "#/definitions/ProductResponse"
+            $ref: "#/definitions/GetProductResponse"
         "404":
           description: "404 response"
           schema:
             $ref: "#/definitions/ErrorResponse"
 definitions:
-  ProductListResponse:
+  PostProductResponse:
+    type: "object"
+    required:
+    - "count"
+    - "id"
+    - "price"
+    - "title"
+    properties:
+      price:
+        type: "number"
+        title: "Product price"
+        minimum: 0.0
+      count:
+        type: "number"
+        title: "Products left in stock"
+        minimum: 0.0
+      description:
+        type: "string"
+        title: "Product description"
+      id:
+        type: "string"
+        title: "Unique ID of the product"
+      title:
+        type: "string"
+        title: "Product title"
+    description: "POST Products response model"
+  GetProductResponse:
+    type: "object"
+    required:
+    - "count"
+    - "id"
+    - "price"
+    - "title"
+    properties:
+      price:
+        type: "number"
+        title: "Product price"
+        minimum: 0.0
+      count:
+        type: "number"
+        title: "Products left in stock"
+        minimum: 0.0
+      description:
+        type: "string"
+        title: "Product description"
+      id:
+        type: "string"
+        title: "Unique ID of the product"
+      title:
+        type: "string"
+        title: "Product title"
+    description: "GET Products request model"
+  GetProductListResponse:
     type: "object"
     required:
     - "items"
@@ -80,11 +170,10 @@ definitions:
           - "price"
           - "title"
     description: "GET Product request model"
-  ProductResponse:
+  PostProductRequest:
     type: "object"
     required:
     - "count"
-    - "id"
     - "price"
     - "title"
     properties:
@@ -99,13 +188,10 @@ definitions:
       description:
         type: "string"
         title: "Product description"
-      id:
-        type: "string"
-        title: "Unique ID of the product"
       title:
         type: "string"
         title: "Product title"
-    description: "GET Products request model"
+    description: "POST Products request model"
   ErrorResponse:
     type: "object"
     properties:
