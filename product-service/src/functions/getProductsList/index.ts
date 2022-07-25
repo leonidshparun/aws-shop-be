@@ -3,7 +3,7 @@ import { getProductListResponseModel } from '@functions/getProductsList/schema';
 import { errorResponseModel } from '@schema/error';
 
 export default {
-  handler: `${handlerPath(__dirname)}/handler.main`,
+  handler: `${handlerPath(__dirname)}`,
   events: [
     {
       http: {
