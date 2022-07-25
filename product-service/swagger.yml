@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "This is my AWS shop API"
-  version: "2022-07-23T11:29:45Z"
+  version: "2022-07-25T17:37:09Z"
   title: "product-service-dev"
 host: "jr2kwhc8g7.execute-api.eu-west-1.amazonaws.com"
 basePath: "/dev"
@@ -109,6 +109,7 @@ definitions:
       title:
         type: "string"
         title: "Product title"
+        minLength: 1
     description: "POST Products response model"
   GetProductResponse:
     type: "object"
@@ -135,6 +136,7 @@ definitions:
       title:
         type: "string"
         title: "Product title"
+        minLength: 1
     description: "GET Products request model"
   GetProductListResponse:
     type: "object"
@@ -164,6 +166,7 @@ definitions:
             title:
               type: "string"
               title: "Product title"
+              minLength: 1
           required:
           - "count"
           - "id"
@@ -191,6 +194,7 @@ definitions:
       title:
         type: "string"
         title: "Product title"
+        minLength: 1
     description: "POST Products request model"
   ErrorResponse:
     type: "object"

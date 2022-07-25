@@ -14,6 +14,7 @@ export const productSchema = {
     title: {
       type: 'string',
       title: 'Product title',
+      minLength: 1
     },
     description: {
       type: 'string',
