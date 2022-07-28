@@ -1,6 +1,10 @@
-import { getProductList } from '../mock/mock-db';
 import { formatJSONResponse } from '@libs/api-gateway';
-import { getProductsList as handler } from '@functions/getProductsList/handler';
+import { getProductsList } from '@functions/getProductsList/lambda';
+import { ProductInMemoryDataService } from '../services/product-in-memory-data.service';
+
+const mockedProductDataService = new ProductInMemoryDataService();
+
+const handler = getProductsList(mockedProductDataService);
 
 describe('getProductsList', () => {
   it('should return status code 200', async () => {
@@ -26,7 +30,7 @@ describe('getProductsList', () => {
   it('should return JSON response with mocked product list', async () => {
     const resultFromHandler = await handler(null, null, null);
 
-    const mockedData = await getProductList();
+    const mockedData = await mockedProductDataService.getProducts();
     const mockedResult = formatJSONResponse({ items: mockedData });
 
     expect(mockedResult).toEqual(resultFromHandler);

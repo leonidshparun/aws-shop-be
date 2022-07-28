@@ -1,5 +1,5 @@
 import { FromSchema } from 'json-schema-to-ts';
 
-import product from '@schema/product';
+import { productSchema } from '@schema/product';
 
-export type Product = FromSchema<typeof product>;
+export type Product = FromSchema<typeof productSchema>;

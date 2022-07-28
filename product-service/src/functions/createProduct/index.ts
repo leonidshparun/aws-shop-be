@@ -1,5 +1,6 @@
 import { handlerPath } from '@libs/handler-resolver';
-import { getProductByIdResponseModel } from '@functions/getProductsById/schema';
+
+import { createProductRequestModel, createProductResponseModel } from './schema';
 import { errorResponseModel } from '@schema/error';
 
 export default {
@@ -7,33 +8,31 @@ export default {
   events: [
     {
       http: {
-        method: 'get',
-        path: 'products/{productId}',
-        request: {
-          parameters: {
-            paths: {
-              productId: true,
-            },
+        method: 'post',
+        path: 'products',
+        cors: true,
+        response: {
+          headers: {
+            'Content-Type': 'application/json',
           },
         },
         documentation: {
-          summary: 'Get Product By Id',
-          description: 'Returns a single product',
-          pathParams: [
-            {
-              name: 'productId',
-              description: 'ID of product to return',
-              required: true,
-            },
-          ],
+          summary: 'Create product',
+          description: 'Returns a single newly created product',
+          requestModels: {
+            'application/json': createProductRequestModel.name,
+          },
+          requestBody: {
+            description: 'Request body description',
+          },
           methodResponses: [
             {
               statusCode: '200',
               responseBody: {
-                description: 'A product with specified id',
+                description: 'A newly created product',
               },
               responseModels: {
-                'application/json': getProductByIdResponseModel.name,
+                'application/json': createProductResponseModel.name,
               },
             },
             {

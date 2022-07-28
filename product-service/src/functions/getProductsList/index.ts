@@ -1,9 +1,9 @@
 import { handlerPath } from '@libs/handler-resolver';
-
-import { ResponseModel } from '@schema/index';
+import { getProductListResponseModel } from '@functions/getProductsList/schema';
+import { errorResponseModel } from '@schema/error';
 
 export default {
-  handler: `${handlerPath(__dirname)}/handler.main`,
+  handler: `${handlerPath(__dirname)}`,
   events: [
     {
       http: {
@@ -19,7 +19,7 @@ export default {
                 description: 'A product list',
               },
               responseModels: {
-                'application/json': ResponseModel.ProductList,
+                'application/json': getProductListResponseModel.name,
               },
             },
             {
@@ -28,7 +28,7 @@ export default {
                 description: 'Products not found',
               },
               responseModels: {
-                'application/json': ResponseModel.Error,
+                'application/json': errorResponseModel.name,
               },
             },
           ],
