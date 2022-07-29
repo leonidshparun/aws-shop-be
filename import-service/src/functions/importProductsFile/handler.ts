@@ -31,9 +31,7 @@ export const importProductsFile: ValidatedEventAPIGatewayProxyEvent<
 
     const url = s3.getSignedUrl("putObject", params);
 
-    return formatJSONResponse({
-      url,
-    });
+    return formatJSONResponse(url);
   } catch (error) {
     console.error(error);
   }

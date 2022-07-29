@@ -29,7 +29,7 @@ describe("importProductsFile", () => {
 
     const response = await importProductsFile(mockedEvent, null, null);
 
-    expect(response).toEqual(formatJSONResponse({ url: mockedSignedUrl }));
+    expect(response).toEqual(formatJSONResponse(mockedSignedUrl));
   });
 
   test("should return formatted response with status code 200", async () => {
