@@ -6,7 +6,7 @@ import { S3 } from "aws-sdk";
 
 import schema from "./schema";
 
-const importProductsFile: ValidatedEventAPIGatewayProxyEvent<
+export const importProductsFile: ValidatedEventAPIGatewayProxyEvent<
   typeof schema
 > = async (event) => {
   const {
@@ -16,7 +16,7 @@ const importProductsFile: ValidatedEventAPIGatewayProxyEvent<
     S3_IMPORT_CONTENT_TYPE,
   } = process.env;
 
-  const fileName = event.queryStringParameters.name;
+  const fileName = event.queryStringParameters?.name;
 
   const s3 = new S3({ region: "eu-west-1" });
   const catalogPath = `${S3_UPLOAD_FOLDER}/${fileName}`;

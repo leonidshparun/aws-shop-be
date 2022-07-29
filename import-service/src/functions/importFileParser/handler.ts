@@ -3,7 +3,7 @@ import { S3Event } from "aws-lambda";
 import { S3 } from "aws-sdk";
 import csv from "csv-parser";
 
-const importFileParser = async (event: S3Event) => {
+export const importFileParser = async (event: S3Event) => {
   const { S3_IMPORT_BUCKET, S3_BUCKET_REGION } = process.env;
   const s3 = new S3({ region: S3_BUCKET_REGION });
   try {
