@@ -5,7 +5,9 @@ import csv from "csv-parser";
 
 export const importFileParser = async (event: S3Event) => {
   const { S3_IMPORT_BUCKET, S3_BUCKET_REGION } = process.env;
+
   const s3 = new S3({ region: S3_BUCKET_REGION });
+
   try {
     for (const record of event.Records) {
       const readableStream = s3
