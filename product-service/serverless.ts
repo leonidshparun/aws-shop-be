@@ -3,6 +3,7 @@ import type { AWS } from '@serverless/typescript';
 import getProductsList from '@functions/getProductsList';
 import getProductsById from '@functions/getProductsById';
 import createProduct from '@functions/createProduct';
+import catalogBatchProcess from '@functions/catalogBatchProcess';
 
 import { errorResponseModel } from '@schema/error';
 import { getProductByIdResponseModel } from '@functions/getProductsById/schema';
@@ -34,6 +35,19 @@ const serverlessConfiguration: AWS = {
       PG_DATABASE: '${env:PG_DATABASE}',
       PG_USERNAME: '${env:PG_USERNAME}',
       PG_PASSWORD: '${env:PG_PASSWORD}',
+      SQS_URL: {
+        Ref: 'SQSQueue',
+      },
+    },
+  },
+  resources: {
+    Resources: {
+      SQSQueue: {
+        Type: 'AWS::SQS::Queue',
+        Properties: {
+          QueueName: 'catalogItemsQueue',
+        },
+      },
     },
   },
   // import the function via paths
@@ -41,6 +55,7 @@ const serverlessConfiguration: AWS = {
     getProductsList,
     getProductsById,
     createProduct,
+    catalogBatchProcess,
   },
   package: { individually: true },
   custom: {
