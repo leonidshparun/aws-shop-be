@@ -49,6 +49,13 @@ const serverlessConfiguration: AWS = {
         },
       },
     },
+    Outputs: {
+      queueUrl: {
+        Value: {
+          Ref: 'SQSQueue',
+        },
+      },
+    },
   },
   // import the function via paths
   functions: {

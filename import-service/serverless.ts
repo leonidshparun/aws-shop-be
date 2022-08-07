@@ -24,6 +24,23 @@ const serverlessConfiguration: AWS = {
         Action: ["s3:*"],
         Resource: ["arn:aws:s3:::aws-shop-import-service/*"],
       },
+      {
+        Effect: "Allow",
+        Action: ["sqs:*"],
+        Resource: [
+          {
+            "Fn::Join": [
+              ":",
+              [
+                "arn:aws:sqs",
+                { Ref: "AWS::Region" },
+                { Ref: "AWS::AccountId" },
+                "catalogItemsQueue",
+              ],
+            ],
+          },
+        ],
+      },
     ],
     apiGateway: {
       minimumCompressionSize: 1024,
@@ -37,6 +54,7 @@ const serverlessConfiguration: AWS = {
       S3_SIGNED_URL_EXPIRE: "${env:S3_SIGNED_URL_EXPIRE}",
       S3_IMPORT_CONTENT_TYPE: "${env:S3_IMPORT_CONTENT_TYPE}",
       S3_BUCKET_REGION: "${env:S3_BUCKET_REGION}",
+      SQS_URL: "${param:queueUrl}",
     },
   },
   // import the function via paths

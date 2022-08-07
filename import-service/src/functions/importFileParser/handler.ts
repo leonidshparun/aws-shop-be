@@ -1,11 +1,16 @@
 import { middyfy } from "@libs/lambda";
 import { S3Event } from "aws-lambda";
-import { S3 } from "aws-sdk";
+import { S3, SQS } from "aws-sdk";
 import csv from "csv-parser";
 
-export const importFileParser = async (event: S3Event) => {
-  const { S3_IMPORT_BUCKET, S3_BUCKET_REGION } = process.env;
+import { productSchema } from "../../schema/product";
 
+type ProductRow = typeof productSchema;
+
+export const importFileParser = async (event: S3Event) => {
+  const { S3_IMPORT_BUCKET, S3_BUCKET_REGION, SQS_URL } = process.env;
+
+  const sqs = new SQS({ region: S3_BUCKET_REGION });
   const s3 = new S3({ region: S3_BUCKET_REGION });
 
   try {
@@ -14,21 +19,28 @@ export const importFileParser = async (event: S3Event) => {
         .getObject({ Bucket: S3_IMPORT_BUCKET, Key: record.s3.object.key })
         .createReadStream();
 
-      await new Promise((resolve, reject) => {
-        const fetchData = [];
+      const rows = await new Promise<ProductRow[]>((resolve, reject) => {
+        const fetchData: ProductRow[] = [];
 
         readableStream
           .pipe(csv())
-          .on("data", (row) => {
+          .on("data", (row: ProductRow) => {
             fetchData.push(row);
-            console.log(row);
           })
           .on("end", () => {
-            console.log("CSV file successfully processed");
             resolve(fetchData);
           })
           .on("error", reject);
       });
+
+      for (const row of rows) {
+        await sqs
+          .sendMessage({
+            QueueUrl: SQS_URL,
+            MessageBody: JSON.stringify(row),
+          })
+          .promise();
+      }
 
       const parsedFileName = record.s3.object.key.replace("uploaded", "parsed");
 

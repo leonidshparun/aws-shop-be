@@ -1,0 +1,10 @@
+# serverless-compose.yml
+services:
+  product-service:
+    path: product-service
+
+  import-service:
+    path: import-service
+    params:
+      queueUrl: ${product-service.queueUrl}
+
