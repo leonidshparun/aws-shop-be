@@ -38,7 +38,20 @@ const serverlessConfiguration: AWS = {
       SQS_URL: {
         Ref: 'SQSQueue',
       },
+      SNS_URL: {
+        Ref: 'SNSTopic',
+      },
+      APP_REGION: '${env:APP_REGION}'
     },
+    iamRoleStatements: [
+      {
+        Effect: 'Allow',
+        Action: ['sns:*'],
+        Resource: {
+          Ref: 'SNSTopic',
+        },
+      },
+    ],
   },
   resources: {
     Resources: {
@@ -46,6 +59,22 @@ const serverlessConfiguration: AWS = {
         Type: 'AWS::SQS::Queue',
         Properties: {
           QueueName: 'catalogItemsQueue',
+        },
+      },
+      SNSTopic: {
+        Type: 'AWS::SNS::Topic',
+        Properties: {
+          TopicName: 'createProductTopic',
+        },
+      },
+      SNSSubscription: {
+        Type: 'AWS::SNS::Subscription',
+        Properties: {
+          Endpoint: 'leanid_shparun@epam.com',
+          Protocol: 'email',
+          TopicArn: {
+            Ref: 'SNSTopic',
+          },
         },
       },
     },

@@ -8,9 +8,10 @@ import { productSchema } from "../../schema/product";
 type ProductRow = typeof productSchema;
 
 export const importFileParser = async (event: S3Event) => {
-  const { S3_IMPORT_BUCKET, S3_BUCKET_REGION, SQS_URL } = process.env;
+  const { S3_IMPORT_BUCKET, S3_BUCKET_REGION, SQS_URL, APP_REGION } =
+    process.env;
 
-  const sqs = new SQS({ region: S3_BUCKET_REGION });
+  const sqs = new SQS({ region: APP_REGION });
   const s3 = new S3({ region: S3_BUCKET_REGION });
 
   try {

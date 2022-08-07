@@ -54,6 +54,7 @@ const serverlessConfiguration: AWS = {
       S3_SIGNED_URL_EXPIRE: "${env:S3_SIGNED_URL_EXPIRE}",
       S3_IMPORT_CONTENT_TYPE: "${env:S3_IMPORT_CONTENT_TYPE}",
       S3_BUCKET_REGION: "${env:S3_BUCKET_REGION}",
+      APP_REGION: "${env:APP_REGION}",
       SQS_URL: "${param:queueUrl}",
     },
   },
