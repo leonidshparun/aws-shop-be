@@ -1,4 +1,4 @@
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Product } from '../models/product.model';
 import mockResponseData from '../data/mock/mock-products.json';
@@ -20,7 +20,7 @@ export class ProductInMemoryDataService implements ProductService {
   async createProduct(
     product: Pick<Product, 'title' | 'description' | 'count' | 'price'>
   ): Promise<Product> {
-    const newProductId = uuid();
+    const newProductId = uuidv4();
 
     const newProduct = {
       ...product,
