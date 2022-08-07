@@ -16,17 +16,25 @@ export const catalogBatchProcess =
       for (const record of event.Records) {
         const product = await productDataService.createProduct(JSON.parse(record.body));
         productsId.push(product.id);
+
+        const message = `New product added to stock: model: "${product.title}", price: ${product.price} BYN`;
+
+        await sns
+          .publish({
+            Subject: 'E-shop: New product',
+            TopicArn: SNS_URL,
+            Message: message,
+            MessageAttributes: {
+              price: {
+                DataType: 'Number',
+                StringValue: product.price.toString(),
+              },
+            },
+          })
+          .promise();
       }
 
       const message = `Created products: ${productsId.join(', ')}`;
-
-      await sns
-        .publish({
-          Subject: 'New Products Id',
-          TopicArn: SNS_URL,
-          Message: message,
-        })
-        .promise();
 
       return formatJSONResponse({ message });
     } catch (error) {

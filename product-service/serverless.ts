@@ -41,7 +41,7 @@ const serverlessConfiguration: AWS = {
       SNS_URL: {
         Ref: 'SNSTopic',
       },
-      APP_REGION: '${env:APP_REGION}'
+      APP_REGION: '${env:APP_REGION}',
     },
     iamRoleStatements: [
       {
@@ -67,13 +67,29 @@ const serverlessConfiguration: AWS = {
           TopicName: 'createProductTopic',
         },
       },
-      SNSSubscription: {
+      SNSSubscriptionPriceMore1000: {
         Type: 'AWS::SNS::Subscription',
         Properties: {
           Endpoint: 'leanid_shparun@epam.com',
           Protocol: 'email',
           TopicArn: {
             Ref: 'SNSTopic',
+          },
+          FilterPolicy: {
+            price: [{ numeric: ['>=', 1000] }],
+          },
+        },
+      },
+      SNSSubscriptionPriceLess1000: {
+        Type: 'AWS::SNS::Subscription',
+        Properties: {
+          Endpoint: 'leonidshparun@gmail.com',
+          Protocol: 'email',
+          TopicArn: {
+            Ref: 'SNSTopic',
+          },
+          FilterPolicy: {
+            price: [{ numeric: ['<', 1000] }],
           },
         },
       },
