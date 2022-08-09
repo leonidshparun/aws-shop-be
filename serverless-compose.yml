@@ -7,4 +7,5 @@ services:
     path: import-service
     params:
       queueUrl: ${product-service.queueUrl}
+      queueName: ${product-service.queueName}
 

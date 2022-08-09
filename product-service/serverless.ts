@@ -58,7 +58,7 @@ const serverlessConfiguration: AWS = {
       SQSQueue: {
         Type: 'AWS::SQS::Queue',
         Properties: {
-          QueueName: 'catalogItemsQueue',
+          QueueName: '${env:CATALOG_QUEUE}',
         },
       },
       SNSTopic: {
@@ -100,6 +100,9 @@ const serverlessConfiguration: AWS = {
           Ref: 'SQSQueue',
         },
       },
+      queueName: {
+        Value: '${env:CATALOG_QUEUE}'
+      }
     },
   },
   // import the function via paths

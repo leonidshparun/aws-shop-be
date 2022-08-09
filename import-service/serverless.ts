@@ -35,7 +35,7 @@ const serverlessConfiguration: AWS = {
                 "arn:aws:sqs",
                 { Ref: "AWS::Region" },
                 { Ref: "AWS::AccountId" },
-                "catalogItemsQueue",
+                "${param:queueName}",
               ],
             ],
           },
