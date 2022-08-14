@@ -9,9 +9,9 @@ const serverlessConfiguration: AWS = {
   useDotenv: true,
   provider: {
     name: "aws",
-    runtime: 'nodejs14.x',
-    region: 'eu-west-1',
-    stage: 'dev',
+    runtime: "nodejs14.x",
+    region: "eu-west-1",
+    stage: "dev",
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -20,6 +20,15 @@ const serverlessConfiguration: AWS = {
       leonidshparun: "${env:leonidshparun}",
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
       NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
+    },
+  },
+  resources: {
+    Outputs: {
+      basicAuthorizer: {
+        Value: {
+          "Fn::GetAtt": ["BasicAuthorizerLambdaFunction", "Arn"],
+        },
+      },
     },
   },
   // import the function via paths

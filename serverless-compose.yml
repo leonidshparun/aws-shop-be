@@ -11,4 +11,5 @@ services:
     params:
       queueUrl: ${product-service.queueUrl}
       queueName: ${product-service.queueName}
+      basicAuthorizer: ${authorization-service.basicAuthorizer}
 
