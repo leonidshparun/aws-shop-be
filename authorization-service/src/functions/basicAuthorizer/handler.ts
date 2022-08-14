@@ -4,28 +4,24 @@ const basicAuthorizer = async (event) => {
   const token = event?.headers?.Authorization;
 
   if (!token) {
-    return "Unauthorized!";
+    throw new Error("Unauthorized");
   }
 
-  try {
-    const encodedCredentials = token.split(" ").pop();
-    const buff = Buffer.from(encodedCredentials, "base64");
-    const plainCredentials = buff.toString("utf-8").split(":");
-    const [username, password] = plainCredentials;
+  const encodedCredentials = token.split(" ").pop();
+  const buff = Buffer.from(encodedCredentials, "base64");
+  const plainCredentials = buff.toString("utf-8").split(":");
+  const [username, password] = plainCredentials;
 
-    if (!username || !password) {
-      return "Unauthorized!";
-    }
-
-    const storedUserPassword = process.env[username];
-
-    const effect =
-      !storedUserPassword || storedUserPassword !== password ? "Deny" : "Allow";
-
-    return generatePolicy(encodedCredentials, event.methodArn, effect);
-  } catch (e) {
-    return `"Unauthorized: ${e.message}`;
+  if (!username || !password) {
+    throw new Error("Unauthorized");
   }
+
+  const storedUserPassword = process.env[username];
+
+  const effect =
+    !storedUserPassword || storedUserPassword !== password ? "Deny" : "Allow";
+
+  return generatePolicy(encodedCredentials, event.methodArn, effect);
 };
 
 const generatePolicy = (principalId, resource, effect = "Allow") => ({
