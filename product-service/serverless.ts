@@ -3,6 +3,7 @@ import type { AWS } from '@serverless/typescript';
 import getProductsList from '@functions/getProductsList';
 import getProductsById from '@functions/getProductsById';
 import createProduct from '@functions/createProduct';
+import catalogBatchProcess from '@functions/catalogBatchProcess';
 
 import { errorResponseModel } from '@schema/error';
 import { getProductByIdResponseModel } from '@functions/getProductsById/schema';
@@ -34,6 +35,74 @@ const serverlessConfiguration: AWS = {
       PG_DATABASE: '${env:PG_DATABASE}',
       PG_USERNAME: '${env:PG_USERNAME}',
       PG_PASSWORD: '${env:PG_PASSWORD}',
+      SQS_URL: {
+        Ref: 'SQSQueue',
+      },
+      SNS_URL: {
+        Ref: 'SNSTopic',
+      },
+      APP_REGION: '${env:APP_REGION}',
+    },
+    iamRoleStatements: [
+      {
+        Effect: 'Allow',
+        Action: ['sns:*'],
+        Resource: {
+          Ref: 'SNSTopic',
+        },
+      },
+    ],
+  },
+  resources: {
+    Resources: {
+      SQSQueue: {
+        Type: 'AWS::SQS::Queue',
+        Properties: {
+          QueueName: '${env:CATALOG_QUEUE}',
+        },
+      },
+      SNSTopic: {
+        Type: 'AWS::SNS::Topic',
+        Properties: {
+          TopicName: 'createProductTopic',
+        },
+      },
+      SNSSubscriptionPriceMore1000: {
+        Type: 'AWS::SNS::Subscription',
+        Properties: {
+          Endpoint: 'leanid_shparun@epam.com',
+          Protocol: 'email',
+          TopicArn: {
+            Ref: 'SNSTopic',
+          },
+          FilterPolicy: {
+            price: [{ numeric: ['>=', 1000] }],
+          },
+        },
+      },
+      SNSSubscriptionPriceLess1000: {
+        Type: 'AWS::SNS::Subscription',
+        Properties: {
+          Endpoint: 'leonidshparun@gmail.com',
+          Protocol: 'email',
+          TopicArn: {
+            Ref: 'SNSTopic',
+          },
+          FilterPolicy: {
+            price: [{ numeric: ['<', 1000] }],
+          },
+        },
+      },
+    },
+    Outputs: {
+      queueUrl: {
+        Value: {
+          Ref: 'SQSQueue',
+        },
+      },
+      queueName: {
+        Value: '${env:CATALOG_QUEUE}'
+      }
     },
   },
   // import the function via paths
@@ -41,6 +110,7 @@ const serverlessConfiguration: AWS = {
     getProductsList,
     getProductsById,
     createProduct,
+    catalogBatchProcess,
   },
   package: { individually: true },
   custom: {
