@@ -1,5 +1,8 @@
 # serverless-compose.yml
 services:
+  authorization-service:
+    path: authorization-service
+
   product-service:
     path: product-service
 
@@ -8,4 +11,5 @@ services:
     params:
       queueUrl: ${product-service.queueUrl}
       queueName: ${product-service.queueName}
+      basicAuthorizer: ${authorization-service.basicAuthorizer}
 

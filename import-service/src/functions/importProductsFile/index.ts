@@ -20,6 +20,12 @@ export default {
             },
           },
         },
+        authorizer: {
+          name: "basicAuthorizer",
+          arn: "${param:basicAuthorizer}",
+          identitySource: "method.request.header.Authorization",
+          type: "request",
+        },
       },
     },
   ],
